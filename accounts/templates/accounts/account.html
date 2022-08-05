@@ -1,0 +1,30 @@
+{% extends '_base.html' %}
+
+{% load static i18n %}
+{% block title %}{% trans 'Profile' %}{% endblock %}
+
+
+{% block content %}
+    <div class="mt-5 row d-flex justify-content-center align-items-center h-100">
+        <div class="" style="text-align: center; font-weight: bold; font-size: x-large">
+            {% trans 'Hello' %}, {{ request.user|title }}!
+        </div>
+        <div class="" style="text-align: center; font-weight: bold; font-size: x-large">
+            {% trans 'Your current IP' %}: <span class="text-bg-success"> {{ current_ip }}</span>
+        </div>
+        <div class="mt-5" style="text-align: -webkit-center;">
+            <form method="post" style="width: 20rem">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-primary">{% trans 'Save' %} </button>
+            </form>
+        </div>
+        {% if request.user.is_staff %}
+            <div class="log">
+            {% for log in logs %}
+                <p>{{ log }}</p>
+            {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+{% endblock content %}
