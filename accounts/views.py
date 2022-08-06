@@ -45,20 +45,20 @@ class ProfileView(LoginRequiredMixin, View):
 
 
 class Login(LoginView):
-    ...
+    next_page = '/'
 
 
 class Logout(LogoutView):
     ...
-# TODO Not specified data? vaccinate info in admin panel 
+
 
 class CertView(View):
-    
+
     def get(self, request):
         context = self.get_context_data()
         return render(request=request,
-        template_name="accounts/includes/certificate.html",
-        context=context)
+                      template_name="accounts/includes/certificate.html",
+                      context=context)
 
     def get_context_data(self):
         vac_data = VaccinateInfo.objects.filter(user=self.request.user)
@@ -70,6 +70,7 @@ class CertView(View):
             diasese=diasese,
             profile=profile
         )
+
 
 # https://www.gosuslugi.ru/covid-cert/status/7f4c7f1d-0e39-4812-ba79-2cafa7da3f9c?lang=en
 # gosuslug1ru
