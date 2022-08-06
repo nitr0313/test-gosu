@@ -4,4 +4,7 @@ __pycache__
 .venv
 db.sqlite3
 /static
-/temp
+temp/*
+.idea
+public/media/qrcode
+!.gitkeep
