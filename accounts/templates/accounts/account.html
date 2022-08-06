@@ -21,9 +21,9 @@
         </div>
         {% if request.user.is_staff %}
             <div class="log">
-            {% for log in logs %}
-                <p>{{ log }}</p>
-            {% endfor %}
+                {% for log in logs %}
+                    <p>{{ log }}</p>
+                {% endfor %}
             </div>
         {% endif %}
     </div>
