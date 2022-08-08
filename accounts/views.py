@@ -40,6 +40,7 @@ class ProfileView(LoginRequiredMixin, View):
         context = dict(
             form=form,
             object=instance,
+            profile=instance
         )
         return context
 
@@ -86,6 +87,7 @@ class CheckCertView(View):
         context = dict(
             date_until=vac.vaccine_date + datetime.timedelta(days=183),
             passport_secure=passport_secure,
-            full_name_secure=full_name_secure
+            full_name_secure=full_name_secure,
+            profile=profile
         )
         return render(request, "accounts/check_cert.html", context)
